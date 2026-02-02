@@ -1,32 +1,35 @@
-# Simple Python AWS DevOps Application
+# AWS DevOps Final Assessment Project
 
-This is a minimal Python Flask application designed for an AWS DevOps final assessment.
+## Overview
+A Python Flask application deployed on AWS using:
+- GitHub Actions for CI/CD
+- Amazon ECS for container orchestration
+- Amazon RDS (MySQL) for database
+- Amazon ECR for container registry
+- Terraform for infrastructure as code
+
+## Application Architecture
+1. **Frontend**: Flask application running on port 5000
+2. **Database**: MySQL RDS instance
+3. **Container**: Dockerized app on ECS Fargate
+4. **Load Balancer**: Application Load Balancer
 
 ## Routes
-
-- `/` : Returns a simple text response to verify the application is running.
-- `/db` : Attempts to connect to a database and run a simple query.
+- `GET /` - Health check endpoint
+- `GET /db` - Database connection test
 
 ## Environment Variables
+Required environment variables:
+- `DB_HOST` - RDS endpoint
+- `DB_NAME` - Database name
+- `DB_USER` - Database username  
+- `DB_PASSWORD` - Database password
+- `DB_PORT` - Database port (default: 3306)
 
-The application requires the following environment variables:
-
-- DB_HOST
-- DB_NAME
-- DB_USER
-- DB_PASSWORD
-
-See `.env.example` for reference.
-
-## Running Locally
-
+## Local Development
 ```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Run application
 python app.py
-```
-
-## AWS Usage
-
-- Use Amazon RDS for the database.
-- Deploy using ECS or EKS.
-- Inject environment variables using task definitions or Kubernetes secrets.
